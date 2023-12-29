@@ -16,4 +16,11 @@ public class UserService {
             throw new RuntimeException("utente esiste già");
         repository.save(user);
     }
+
+    public void modifyUser(User user) {
+        //utente loggato è effetivamente lo stesso di quello che richiede la modifica
+        if (!repository.existsById(user.getEmail()))  
+            throw new RuntimeException("utente non esiste");
+        repository.save(user);
+    }
 }

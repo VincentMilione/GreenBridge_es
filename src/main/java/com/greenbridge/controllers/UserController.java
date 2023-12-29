@@ -12,6 +12,7 @@ import com.greenbridge.services.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+
 @Controller
 public class UserController {
     @Autowired
@@ -22,6 +23,12 @@ public class UserController {
         model.addAttribute("utente", new User());
         return "pages/user/home";
     }
+
+    @GetMapping("/modifica-utente")
+    public String modificaUtente() {
+        return "pages/user/modify";
+    }
+    
     
     @PostMapping("/registrazione")
     public String completaRegistrazione(@ModelAttribute User user) {
