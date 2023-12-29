@@ -22,6 +22,13 @@ public class RestUserController {
         service.modifyUser(user);
         return ResponseEntity.ok("Tutto ok!");
     }
+
+    @PostMapping("/api/registrazione")
+    public ResponseEntity<String> completaRegistrazione(@RequestBody User user) {
+        //TODO: process POST request
+        service.saveUser(user);
+        return ResponseEntity.ok("Tutto ok!");
+    }
     
     
 }

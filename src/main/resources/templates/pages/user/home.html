@@ -6,13 +6,36 @@
 </head>
 <body>
   <section layout:fragment="content">
-    <form th:action="@{/registrazione}" method="post" th:object="${utente}">
+    <form action="#" method="post">
         <label>email</label>
-        <input type="text" th:field="*{email}">
+        <input type="text" id="email">
         <label>password</label>
-        <input type="text" th:field="*{psw}">
-        <input type="submit">
+        <input type="text" id="password">
+        <button type="button" onclick="submitForm()">submit</button>
     </form>
+    <script th:inline="javascript">
+      function submitForm() {
+          var email = document.getElementById("email").value
+          var password = document.getElementById("password").value
+          let data = {email: email, psw: password}
+
+          $.ajax({
+              type: 'POST',
+              url: '/api/registrazione', // Update the URL to match your REST endpoint
+              contentType: 'application/json',
+              data: JSON.stringify(data), //in formato stringa
+              success: function (response) {
+                  // Handle success response
+                  console.log(response);
+              },
+              error: function (error) {
+                  // Handle error response
+                  console.error(error);
+              }
+          });
+      }
+
+  </script>
   </section>
 </body>
 </html>
